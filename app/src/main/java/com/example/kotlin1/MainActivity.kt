@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val savedNumber = savedInstanceState?.getInt(KEY_INDEX, 0) ?: 0
         currentNumber = Preferences.getStoredNumber(applicationContext)
 
         prevButton = findViewById(R.id.prev_button)
