@@ -2,7 +2,9 @@ package com.example.kotlin1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 
@@ -14,7 +16,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var prevButton: ImageButton
     private lateinit var nextButton: ImageButton
     private lateinit var numberOutput: TextView
+    private lateinit var task1Button: Button
     private var currentNumber = 0
+        set(value) {
+        field = value
+        Preferences.setStoredNumber(applicationContext, value)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,24 +32,25 @@ class MainActivity : AppCompatActivity() {
         prevButton = findViewById(R.id.prev_button)
         nextButton = findViewById(R.id.next_button)
         numberOutput = findViewById(R.id.number_output)
+        task1Button = findViewById(R.id.task1_button)
 
         numberOutput.text = currentNumber.toString()
 
-        prevButton.setOnClickListener{
-            if(currentNumber != 0){
+        prevButton.setOnClickListener {
+            if (currentNumber != 0) {
                 currentNumber--
                 numberOutput.text = currentNumber.toString()
             }
         }
 
-        nextButton.setOnClickListener{
+        nextButton.setOnClickListener {
             currentNumber++
             numberOutput.text = currentNumber.toString()
         }
-    }
 
-    override fun onPause() {
-        super.onPause()
-        Preferences.setStoredNumber(applicationContext, currentNumber)
+        task1Button.setOnClickListener {
+            val intent = FirstTaskActivity.newIntent(this@MainActivity)
+            startActivity(intent)
+        }
     }
 }

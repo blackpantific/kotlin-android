@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">kotlin1</string>
-    <string name="button1">button1</string>
-    <string name="button2">button2</string>
-    <string name="button3">button3</string>
+    <string name="button1">Task1</string>
+    <string name="button2">Task2</string>
+    <string name="button3">Task3</string>
     <string name="left_button_text">TO LEFT</string>
     <string name="right_button_text">TO RIGHT</string>
+    <string name="hide_list">hide list</string>
+    <string name="toast">toast</string>
+    <string name="FAB_text">Change TextEdit text</string>
+    <string name="TextEditorHint">Type some text here…</string>
+    <string name="change_label_color">Change label color</string>
+    <string name="toast_text">Some toast message</string>
 </resources>
