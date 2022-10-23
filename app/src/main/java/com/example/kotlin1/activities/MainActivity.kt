@@ -1,12 +1,12 @@
-package com.example.kotlin1
+package com.example.kotlin1.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import com.example.kotlin1.R
+import com.example.kotlin1.helpers.Preferences
 
 private const val TAG = "MainActivity"
 private const val KEY_INDEX = "index"

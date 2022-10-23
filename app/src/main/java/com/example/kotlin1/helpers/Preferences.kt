@@ -1,4 +1,4 @@
-package com.example.kotlin1
+package com.example.kotlin1.helpers
 
 import android.content.Context
 import android.preference.PreferenceManager
