@@ -88,8 +88,10 @@ class FirstTaskDetailsActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
-        savedInstanceState.putInt(ARG_NAT, naturalValue)
-        savedInstanceState.putInt(ARG_FIB, fibonacciValue)
-        savedInstanceState.putInt(ARG_COL, collatzValue)
+        savedInstanceState.apply {
+            putInt(ARG_NAT, naturalValue)
+            putInt(ARG_FIB, fibonacciValue)
+            putInt(ARG_COL, collatzValue)
+        }
     }
 }

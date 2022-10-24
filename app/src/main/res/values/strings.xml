@@ -14,4 +14,5 @@
     <string name="natural_number_button">nat</string>
     <string name="fibonacci_number_button">fib</string>
     <string name="collatz_number_button">col</string>
+    <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
 </resources>

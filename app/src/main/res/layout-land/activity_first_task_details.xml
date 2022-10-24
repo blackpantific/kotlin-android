@@ -107,5 +107,4 @@
         app:layout_constraintBottom_toBottomOf="@+id/image"
         app:layout_constraintEnd_toEndOf="@+id/fib_button" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
