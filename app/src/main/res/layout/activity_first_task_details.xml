@@ -12,10 +12,11 @@
         android:layout_height="186dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
+        android:background="@color/teal_700"
+        android:src="@drawable/pixels"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/pixels"
-        android:background="@color/teal_700"/>
+        tools:srcCompat="@drawable/pixels" />
 
     <TextView
         android:id="@+id/textView"
@@ -24,7 +25,7 @@
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"/>
+        app:layout_constraintStart_toEndOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -38,16 +39,16 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:textSize="30sp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="TextView"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/fib_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2"
@@ -58,52 +59,51 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nat_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="4"
         android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintEnd_toEndOf="@+id/nat_button"
+        app:layout_constraintStart_toStartOf="@+id/nat_button"
+        app:layout_constraintTop_toTopOf="@+id/fib_number" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/col_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5"
         android:textSize="36sp"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/textView3" />
+        app:layout_constraintEnd_toEndOf="@+id/col_button"
+        app:layout_constraintStart_toStartOf="@+id/col_button"
+        app:layout_constraintTop_toTopOf="@+id/fib_number" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/nat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        android:text="@string/natural_number_button"
+        app:layout_constraintEnd_toStartOf="@+id/fib_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/fib_button" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/fib_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2"
         android:layout_marginTop="40dp"
-        app:layout_constraintLeft_toRightOf="@+id/button"
-        app:layout_constraintRight_toLeftOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:text="@string/fibonacci_number_button"
+        app:layout_constraintLeft_toRightOf="@+id/nat_button"
+        app:layout_constraintRight_toLeftOf="@+id/col_button"
+        app:layout_constraintTop_toBottomOf="@+id/fib_number" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/col_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5"
+        android:text="@string/collatz_number_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
-
+        app:layout_constraintStart_toEndOf="@+id/fib_button"
+        app:layout_constraintTop_toTopOf="@+id/fib_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
