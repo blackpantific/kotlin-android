@@ -31,7 +31,7 @@ class FirstTaskDetailsActivity : AppCompatActivity() {
 
     private var naturalValue: Int = 0
     private var fibonacciValue: Int = 0
-    private var collatzValue: Int = 5
+    private var collatzValue: Int = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var numberOutput: TextView
     private lateinit var task1Button: Button
     private var currentNumber = 0
+        //??
         set(value) {
         field = value
         Preferences.setStoredNumber(applicationContext, value)
