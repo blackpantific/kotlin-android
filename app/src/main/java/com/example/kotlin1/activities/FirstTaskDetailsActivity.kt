@@ -31,7 +31,7 @@ class FirstTaskDetailsActivity : AppCompatActivity() {
 
     private var naturalValue: Int = 0
     private var fibonacciValue: Int = 0
-    private var collatzValue: Int = 10
+    private var collatzValue: Int = 12
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class FirstTaskDetailsActivity : AppCompatActivity() {
         val res = intent.extras?.getSerializable(ARG_AUTO) as Auto
         naturalValue = savedInstanceState?.getInt(ARG_NAT, 0) ?: 0
         fibonacciValue = savedInstanceState?.getInt(ARG_FIB, 0) ?: 0
-        collatzValue = savedInstanceState?.getInt(ARG_COL, 0) ?: 5
+        collatzValue = savedInstanceState?.getInt(ARG_COL, 0) ?: 12
 
         naturalButton = findViewById(R.id.nat_button)
         fibonacciButton = findViewById(R.id.fib_button)

@@ -12,7 +12,7 @@ import com.example.kotlin1.models.Auto
 class CarAdapter(context: Context, resource: Int, private var autos: List<Auto>) :
     ArrayAdapter<Auto>(context, resource, autos) {
 
-    private var inflater: LayoutInflater = LayoutInflater.from(context);
+    private var inflater: LayoutInflater = LayoutInflater.from(context)
     private var layout = resource
 
     override fun getView(position: Int, convertView1: View?, parent: ViewGroup): View {

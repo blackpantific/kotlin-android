@@ -8,9 +8,6 @@ import android.widget.TextView
 import com.example.kotlin1.R
 import com.example.kotlin1.helpers.Preferences
 
-private const val TAG = "MainActivity"
-private const val KEY_INDEX = "index"
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var prevButton: ImageButton
@@ -18,11 +15,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var numberOutput: TextView
     private lateinit var task1Button: Button
     private var currentNumber = 0
-        //??
-        set(value) {
-        field = value
-        Preferences.setStoredNumber(applicationContext, value)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +32,14 @@ class MainActivity : AppCompatActivity() {
         prevButton.setOnClickListener {
             if (currentNumber != 0) {
                 currentNumber--
+                Preferences.setStoredNumber(applicationContext, currentNumber)
                 numberOutput.text = currentNumber.toString()
             }
         }
 
         nextButton.setOnClickListener {
             currentNumber++
+            Preferences.setStoredNumber(applicationContext, currentNumber)
             numberOutput.text = currentNumber.toString()
         }
 

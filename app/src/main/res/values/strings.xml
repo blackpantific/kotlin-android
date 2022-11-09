@@ -15,4 +15,6 @@
     <string name="fibonacci_number_button">fib</string>
     <string name="collatz_number_button">col</string>
     <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+    <string name="car_picture">Car picture</string>
+    <string name="some_picture">Some picture</string>
 </resources>
