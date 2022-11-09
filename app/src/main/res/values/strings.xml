@@ -17,4 +17,10 @@
     <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
     <string name="car_picture">Car picture</string>
     <string name="some_picture">Some picture</string>
+    <string name="save_number_task">Save number task</string>
+    <string name="first_task">First task</string>
+    <string name="second_task">Second task</string>
+    <string name="third_task">Third task</string>
+    <string name="opened">Nav menu is opened</string>
+    <string name="closed">Nav menu is closed</string>
 </resources>
