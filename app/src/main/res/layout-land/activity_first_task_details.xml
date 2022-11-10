@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.333"
-        tools:srcCompat="@drawable/pixels" />
+        tools:srcCompat="@drawable/pixels"
+        android:contentDescription="@string/car_picture"/>
 
     <TextView
         android:id="@+id/car_description"
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/car_description"
         app:layout_constraintTop_toTopOf="@+id/image"
-        app:srcCompat="@drawable/ic_baseline_arrow_circle_up_24" />
+        app:srcCompat="@drawable/ic_baseline_arrow_circle_up_24"
+        android:contentDescription="@string/some_picture"/>
 
     <TextView
         android:id="@+id/car_title"
