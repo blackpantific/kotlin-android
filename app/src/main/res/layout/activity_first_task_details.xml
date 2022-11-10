@@ -51,7 +51,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         tools:text="TextView"
-        android:textSize="30sp"
+        android:textSize="@dimen/number_size"
         app:layout_constraintEnd_toEndOf="@+id/image"
         app:layout_constraintStart_toStartOf="@+id/image"
         app:layout_constraintTop_toBottomOf="@+id/image" />
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="2"
-        android:textSize="36sp"
+        android:textSize="@dimen/number_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="4"
-        android:textSize="36sp"
+        android:textSize="@dimen/number_size"
         app:layout_constraintEnd_toEndOf="@+id/nat_button"
         app:layout_constraintStart_toStartOf="@+id/nat_button"
         app:layout_constraintTop_toTopOf="@+id/fib_number" />
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="5"
-        android:textSize="36sp"
+        android:textSize="@dimen/number_size"
         app:layout_constraintEnd_toEndOf="@+id/col_button"
         app:layout_constraintStart_toStartOf="@+id/col_button"
         app:layout_constraintTop_toTopOf="@+id/fib_number" />
