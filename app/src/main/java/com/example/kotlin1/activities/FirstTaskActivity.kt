@@ -78,7 +78,7 @@ class FirstTaskActivity : AppCompatActivity() {
         }
 
         listView.adapter =
-            CarAdapter(this, android.R.layout.simple_list_item_1, DataSource.getListOfCars())
+            CarAdapter(this, android.R.layout.simple_list_item_1, DataSource.fetchData())
 
         listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, v, position, id -> // получаем выбранный пункт
