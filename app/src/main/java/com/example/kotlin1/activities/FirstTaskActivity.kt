@@ -32,6 +32,7 @@ class FirstTaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first_task)
 
+
         supportActionBar!!.setBackgroundDrawable(
             AppCompatResources.getDrawable(this, R.color.teal_200)
         )
