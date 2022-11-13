@@ -15,7 +15,6 @@ import com.example.kotlin1.helpers.DataSource
 import com.example.kotlin1.models.Auto
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.switchmaterial.SwitchMaterial
-import java.util.*
 
 private const val TAG = "FirstTaskFragment"
 
@@ -97,8 +96,6 @@ class FirstTaskFragment : Fragment() {
             AdapterView.OnItemClickListener { parent, v, position, id -> // получаем выбранный пункт
                 val selectedAuto = parent.getItemAtPosition(position) as Auto
                 callbacks?.replaceFragment(selectedAuto)
-//                val intent = FirstTaskDetailsActivity.newIntent(thisFragmentActivity, selectedAuto)
-//                startActivity(intent)
             }
 
         return view
