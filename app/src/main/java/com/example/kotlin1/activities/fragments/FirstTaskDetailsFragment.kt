@@ -58,7 +58,7 @@ class FirstTaskDetailsFragment  : Fragment() {
         carIcon = view.findViewById(R.id.car_icon)
 
         natView.text = naturalValue.toString()
-        fibView.text = fibonacciValue.toString()
+        fibView.text = MathHelper.nthFibonacciTerm(fibonacciValue).toString()
         colView.text = collatzValue.toString()
 
         carDescription.text = res.description

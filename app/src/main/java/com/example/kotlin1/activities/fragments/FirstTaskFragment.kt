@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import com.example.kotlin1.CarAdapter
 import com.example.kotlin1.R
-import com.example.kotlin1.activities.FirstTaskDetailsActivity
-import com.example.kotlin1.activities.MainActivity
 import com.example.kotlin1.helpers.DataSource
 import com.example.kotlin1.models.Auto
 import com.google.android.material.floatingactionbutton.FloatingActionButton
