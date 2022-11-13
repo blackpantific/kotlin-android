@@ -12,12 +12,10 @@
         tools:context=".activities.FirstTaskActivity">
 
         <LinearLayout
+            style="@style/Task1Margins"
             android:layout_width="match_parent"
             android:layout_height="264dp"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -58,35 +56,29 @@
         </LinearLayout>
 
         <TextView
+            style="@style/Task1Margins"
             android:id="@+id/text_output"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:textSize="22sp"
             tools:text="SOME TEXT" />
 
         <EditText
+            style="@style/Task1Margins"
             android:id="@+id/text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:autofillHints="name"
             android:hint="@string/TextEditorHint"
             android:inputType="text"/>
 
         <LinearLayout
+            style="@style/Task1Margins"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginBottom="20dp">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switch_for_label"
@@ -137,6 +129,7 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        style="@style/Task1Margins"
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
