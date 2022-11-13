@@ -14,6 +14,7 @@ import com.example.kotlin1.R
 import com.example.kotlin1.helpers.DataSource
 import com.example.kotlin1.models.Auto
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 private const val TAG = "FirstTaskFragment"
@@ -59,7 +60,7 @@ class FirstTaskFragment : Fragment() {
         labelColorChange = view.findViewById(R.id.label_color_to_change)
 
         fabButton.setOnClickListener {
-            textOutput.text = textInput.text
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).show()
         }
 
         switch.setOnCheckedChangeListener { _, isChecked ->

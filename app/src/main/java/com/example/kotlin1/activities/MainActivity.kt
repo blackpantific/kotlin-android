@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
             supportFragmentManager.findFragmentById(R.id.fragment_container)
 
         if (currentFragment == null) {
-            val fragment = supportFragmentManager
+            supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container, SaveNumberFragment())
                 .commit()
