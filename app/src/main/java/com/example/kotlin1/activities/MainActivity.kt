@@ -4,17 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.kotlin1.R
-import com.example.kotlin1.activities.fragments.FirstTaskFragment
-import com.example.kotlin1.activities.fragments.SaveNumberFragment
-import com.example.kotlin1.activities.fragments.SecondTaskFragment
-import com.example.kotlin1.activities.fragments.ThirdTaskFragment
+import com.example.kotlin1.activities.fragments.*
+import com.example.kotlin1.models.Auto
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
 
-class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
+enum class ColorOfToolBar {
+    DEFAULT,
+    CUSTOM
+}
+
+class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
+    FirstTaskFragment.Callbacks {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout: DrawerLayout
@@ -60,26 +65,30 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
+        when (item.itemId) {
             R.id.save_number_task -> {
+                setToolBarColor(ColorOfToolBar.DEFAULT)
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container, SaveNumberFragment())
                     .commit()
             }
             R.id.first_task -> {
+                setToolBarColor(ColorOfToolBar.CUSTOM)
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container, FirstTaskFragment())
                     .commit()
             }
             R.id.second_task -> {
+                setToolBarColor(ColorOfToolBar.DEFAULT)
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container, SecondTaskFragment())
                     .commit()
             }
             R.id.third_task -> {
+                setToolBarColor(ColorOfToolBar.DEFAULT)
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container, ThirdTaskFragment())
@@ -89,5 +98,26 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun setToolBarColor(type: ColorOfToolBar) {
+        if (type == ColorOfToolBar.DEFAULT) {
+            this.supportActionBar!!.setBackgroundDrawable(
+                AppCompatResources.getDrawable(this, R.color.purple_500)
+            )
+        } else {
+            this.supportActionBar!!.setBackgroundDrawable(
+                AppCompatResources.getDrawable(this, R.color.teal_200)
+            )
+        }
+    }
+
+    override fun replaceFragment(selectedCar: Auto) {
+        val fragment = FirstTaskDetailsFragment.newInstance(selectedCar)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
