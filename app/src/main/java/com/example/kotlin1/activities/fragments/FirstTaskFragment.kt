@@ -18,6 +18,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 private const val TAG = "FirstTaskFragment"
+private const val ARG_SWITCH = "SWITCH_DATA"
+private const val ARG_EXP_LT = "EXPAND_LIST"
+private const val ARG_OUT_TXT = "OUT_TXT"
+private const val ARG_IN_TXT = "IN_TXT"
 
 class FirstTaskFragment : Fragment() {
 
@@ -59,8 +63,13 @@ class FirstTaskFragment : Fragment() {
         showToastButton = view.findViewById(R.id.invoke_toast)
         labelColorChange = view.findViewById(R.id.label_color_to_change)
 
+        switch.isChecked = savedInstanceState?.getBoolean(ARG_SWITCH) ?: false
+        listView.visibility = savedInstanceState?.getInt(ARG_EXP_LT) ?: View.VISIBLE
+        textOutput.text = savedInstanceState?.getString(ARG_OUT_TXT)
+
+
         fabButton.setOnClickListener {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).show()
+            textOutput.text = textInput.text
         }
 
         switch.setOnCheckedChangeListener { _, isChecked ->
@@ -82,11 +91,7 @@ class FirstTaskFragment : Fragment() {
         }
 
         showToastButton.setOnClickListener {
-            Toast.makeText(
-                thisFragmentActivity,
-                R.string.toast_text,
-                Toast.LENGTH_SHORT
-            ).show()
+            Snackbar.make(view, R.string.snackbar_text, Snackbar.LENGTH_LONG).show()
             Log.d(TAG, "Toast called")
         }
 
@@ -105,5 +110,15 @@ class FirstTaskFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         callbacks = null
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.apply {
+            putBoolean(ARG_SWITCH, switch.isChecked)
+            putInt(ARG_EXP_LT, listView.visibility)
+            putString(ARG_OUT_TXT, textOutput.text.toString())
+            putString(ARG_IN_TXT, textInput.text.toString())
+        }
     }
 }

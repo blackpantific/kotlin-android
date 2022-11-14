@@ -10,7 +10,7 @@
     <string name="FAB_text">Change TextEdit text</string>
     <string name="TextEditorHint">Type some text here…</string>
     <string name="change_label_color">Change label color</string>
-    <string name="toast_text">Some toast message</string>
+    <string name="snackbar_text">Snackbar message</string>
     <string name="natural_number_button">nat</string>
     <string name="fibonacci_number_button">fib</string>
     <string name="collatz_number_button">col</string>
