@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button1">Задание1</string>
+    <string name="button2">Задание2</string>
+    <string name="button3">Задание3</string>
+    <string name="left_button_text">ВЛЕВО</string>
+    <string name="right_button_text">ВПРАВО</string>
+    <string name="hide_list">Скрыть список</string>
+    <string name="toast">Уведомление</string>
+    <string name="FAB_text">Изменить текст TextEdit</string>
+    <string name="TextEditorHint">Напечатайте что-либо...</string>
+    <string name="change_label_color">Изменить цвет текстового поля</string>
+    <string name="snackbar_text">Сообщение уведомления</string>
+    <string name="natural_number_button">нат</string>
+    <string name="fibonacci_number_button">фиб</string>
+    <string name="collatz_number_button">кол</string>
+    <string name="car_picture">Иконка авто</string>
+    <string name="some_picture">Какая-то иконка</string>
+    <string name="save_number_task">Сохранить номер задания</string>
+    <string name="first_task">Первое задание</string>
+    <string name="second_task">Второе задание</string>
+    <string name="third_task">Третье задание</string>
+    <string name="opened">Меню открыто</string>
+    <string name="closed">Меню скрыто</string>
+</resources>

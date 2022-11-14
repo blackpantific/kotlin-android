@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import com.example.kotlin1.CarAdapter
 import com.example.kotlin1.R
@@ -53,6 +54,11 @@ class FirstTaskFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first_task, container, false)
 
         thisFragmentActivity = activity as AppCompatActivity
+
+        //rotation sets toolbar color to default
+        thisFragmentActivity.supportActionBar!!.setBackgroundDrawable(
+            AppCompatResources.getDrawable(thisFragmentActivity, R.color.teal_200)
+        )
 
         fabButton = view.findViewById(R.id.fab)
         textOutput = view.findViewById(R.id.text_output)

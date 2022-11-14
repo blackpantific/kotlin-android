@@ -14,7 +14,7 @@
     <string name="natural_number_button">nat</string>
     <string name="fibonacci_number_button">fib</string>
     <string name="collatz_number_button">col</string>
-    <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
+    <string name="Lorem" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit</string>
     <string name="car_picture">Car picture</string>
     <string name="some_picture">Some picture</string>
     <string name="save_number_task">Save number task</string>
