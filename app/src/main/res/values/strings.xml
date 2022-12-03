@@ -23,4 +23,7 @@
     <string name="third_task">Third task</string>
     <string name="opened">Nav menu is opened</string>
     <string name="closed">Nav menu is closed</string>
+    <string name="run">Run</string>
+    <string name="stop">Stop</string>
+    <string name="reset">reset</string>
 </resources>
