@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.kotlin1.R
@@ -26,6 +27,10 @@ class SecondTaskFragment : Fragment() {
     private lateinit var resetButton: Button
     private lateinit var handlerFirstThread: Handler
     private lateinit var handlerSecondThread: Handler
+    private lateinit var increaseFirstThreadSpeed: ImageButton
+    private lateinit var decreaseFirstThreadSpeed: ImageButton
+    private lateinit var increaseSecondThreadSpeed: ImageButton
+    private lateinit var decreaseSecondThreadSpeed: ImageButton
 
     private var firstNumber: Int = 0
     private var secondNumber: Int = 0
@@ -36,8 +41,8 @@ class SecondTaskFragment : Fragment() {
     private lateinit var controlThreads: AtomicBoolean
     private var threadsLaunched: Boolean = false
 
-    private val lock = ReentrantLock()
-    private val condition = lock.newCondition()
+    @Volatile private var defaultFirstTSpeed: Long = 1000
+    @Volatile private var defaultSecondTSpeed: Long = 5000
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -59,6 +64,10 @@ class SecondTaskFragment : Fragment() {
         runButton = view.findViewById(R.id.run_button)
         stopButton = view.findViewById(R.id.stop_button)
         resetButton = view.findViewById(R.id.reset_button)
+        increaseFirstThreadSpeed = view.findViewById(R.id.increaseFirstThreadSpeed)
+        decreaseFirstThreadSpeed = view.findViewById(R.id.decreaseFirstThreadSpeed)
+        increaseSecondThreadSpeed = view.findViewById(R.id.increaseSecondThreadSpeed)
+        decreaseSecondThreadSpeed = view.findViewById(R.id.decreaseSecondThreadSpeed)
 
         //restore previous value
         firstThreadTextOutput.text = firstNumber.toString()
@@ -110,6 +119,30 @@ class SecondTaskFragment : Fragment() {
             secondThreadTextOutput.text = secondNumber.toString()
         }
 
+        increaseFirstThreadSpeed.setOnClickListener {
+            var temp = defaultFirstTSpeed
+            temp += 5000
+            defaultFirstTSpeed = temp
+        }
+
+        decreaseFirstThreadSpeed.setOnClickListener {
+            var temp = defaultFirstTSpeed
+            temp -= 5000
+            defaultFirstTSpeed = temp
+        }
+
+        increaseSecondThreadSpeed.setOnClickListener {
+            var temp = defaultFirstTSpeed
+            temp += 5000
+            defaultFirstTSpeed = temp
+        }
+
+        decreaseSecondThreadSpeed.setOnClickListener {
+            var temp = defaultFirstTSpeed
+            temp -= 5000
+            defaultFirstTSpeed = temp
+        }
+
         return view
     }
 
@@ -134,7 +167,12 @@ class SecondTaskFragment : Fragment() {
             if (flag1 == -2 || flag1 == 0)
                 flag1 = 1
             if (controlThreads.get() && flag1 == 1) {
-                Thread.sleep(1000)
+                try {
+                    Thread.sleep(defaultFirstTSpeed)
+                } catch (e: InterruptedException) {
+                    println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
+                    break;
+                }
                 //println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
                 if (controlThreads.get() && flag1 == 1) {
                     handlerFirstThread.sendEmptyMessage(1)
@@ -149,7 +187,12 @@ class SecondTaskFragment : Fragment() {
             if (flag2 == -2 || flag2 == 0)
                 flag2 = 1
             if (controlThreads.get() && flag2 == 1) {
-                Thread.sleep(5000)
+                try {
+                    Thread.sleep(defaultSecondTSpeed)
+                } catch (e: InterruptedException) {
+                    println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
+                    break;
+                }
                 //println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
                 if (controlThreads.get() && flag2 == 1) {
                     handlerSecondThread.sendEmptyMessage(1)
@@ -169,6 +212,13 @@ class SecondTaskFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
+
+        controlThreads.set(false)
+        flag1 = -1
+        flag2 = -1
+
+        firstThread.interrupt()
+        secondThread.interrupt()
     }
 
     override fun onDestroyView() {

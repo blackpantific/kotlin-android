@@ -25,7 +25,8 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/thread1TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/thread1TextView"
+        />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -55,4 +56,60 @@
             android:layout_height="wrap_content"
             android:text="@string/reset" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/decreaseFirstThreadSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/right_button_text"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/thread1TextView"
+        app:layout_constraintStart_toEndOf="@+id/thread1TextView"
+        app:layout_constraintTop_toTopOf="@+id/thread1TextView"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/arrow_left"
+        tools:ignore="ImageContrastCheck,DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/increaseFirstThreadSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/right_button_text"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/decreaseFirstThreadSpeed"
+        app:layout_constraintStart_toEndOf="@+id/decreaseFirstThreadSpeed"
+        app:layout_constraintTop_toTopOf="@+id/decreaseFirstThreadSpeed"
+        app:srcCompat="@drawable/arrow_right"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageButton
+        android:id="@+id/decreaseSecondThreadSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/thread2TextView"
+        app:layout_constraintStart_toEndOf="@+id/thread2TextView"
+        app:layout_constraintTop_toTopOf="@+id/thread2TextView"
+        app:srcCompat="@drawable/arrow_left"
+        android:contentDescription="@string/left_button_text"/>
+
+    <ImageButton
+        android:id="@+id/increaseSecondThreadSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/decreaseSecondThreadSpeed"
+        app:layout_constraintStart_toEndOf="@+id/decreaseSecondThreadSpeed"
+        app:layout_constraintTop_toTopOf="@+id/decreaseSecondThreadSpeed"
+        app:srcCompat="@drawable/arrow_right"
+        android:contentDescription="@string/right_button_text"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
