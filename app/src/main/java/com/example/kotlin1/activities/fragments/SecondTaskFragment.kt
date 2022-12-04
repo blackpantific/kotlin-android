@@ -14,7 +14,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.kotlin1.R
 import java.util.concurrent.atomic.AtomicBoolean
-import java.util.concurrent.locks.ReentrantLock
 
 class SecondTaskFragment : Fragment() {
 
@@ -93,30 +92,36 @@ class SecondTaskFragment : Fragment() {
         }
 
         runButton.setOnClickListener {
-            controlThreads.set(true)
-            flag1 = -2
-            flag2 = -2
-            if (!threadsLaunched) {
-                launchThreads()
-                threadsLaunched = true
+            if(flag1 == 0 || flag1 == -1){
+                controlThreads.set(true)
+                flag1 = -2
+                flag2 = -2
+                if (!threadsLaunched) {
+                    launchThreads()
+                    threadsLaunched = true
+                }
             }
         }
 
         stopButton.setOnClickListener {
-            controlThreads.set(false)
-            flag1 = -1
-            flag2 = -1
+            if(threadsLaunched){
+                controlThreads.set(false)
+                flag1 = -1
+                flag2 = -1
+            }
         }
 
         resetButton.setOnClickListener {
-            controlThreads.set(false)
+            if(threadsLaunched){
+                controlThreads.set(false)
 
-            flag1 = -1
-            flag2 = -1
-            firstNumber = 0
-            secondNumber = 0
-            firstThreadTextOutput.text = firstNumber.toString()
-            secondThreadTextOutput.text = secondNumber.toString()
+                flag1 = -1
+                flag2 = -1
+                firstNumber = 0
+                secondNumber = 0
+                firstThreadTextOutput.text = firstNumber.toString()
+                secondThreadTextOutput.text = secondNumber.toString()
+            }
         }
 
         increaseFirstThreadSpeed.setOnClickListener {
@@ -127,7 +132,9 @@ class SecondTaskFragment : Fragment() {
 
         decreaseFirstThreadSpeed.setOnClickListener {
             var temp = defaultFirstTSpeed
-            temp -= 5000
+            if((temp - 5000) > 0){
+                temp -= 5000
+            }
             defaultFirstTSpeed = temp
         }
 
@@ -139,7 +146,9 @@ class SecondTaskFragment : Fragment() {
 
         decreaseSecondThreadSpeed.setOnClickListener {
             var temp = defaultFirstTSpeed
-            temp -= 5000
+            if((temp - 5000) > 0){
+                temp -= 5000
+            }
             defaultFirstTSpeed = temp
         }
 
