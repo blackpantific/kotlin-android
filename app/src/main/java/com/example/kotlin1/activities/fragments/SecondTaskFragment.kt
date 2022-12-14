@@ -16,9 +16,9 @@ import com.example.kotlin1.R
 import java.util.concurrent.atomic.AtomicBoolean
 
 enum class ThreadCondition {
-    CREATED,//0
-    STARTED,//-2
-    SUSPENDED,//-1
+    CREATED,
+    STARTED,
+    SUSPENDED,
     PERFORMED
 }
 
@@ -48,10 +48,10 @@ class SecondTaskFragment : Fragment() {
     private var threadsLaunched: Boolean = false
 
     @Volatile
-    private var defaultFirstTSpeed: Long = 500
+    private var defaultFirstTSpeed: Long = 1000
 
     @Volatile
-    private var defaultSecondTSpeed: Long = 1000
+    private var defaultSecondTSpeed: Long = 5000
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -193,8 +193,9 @@ class SecondTaskFragment : Fragment() {
             if (controlThreads.get() && FirstThreadCondition == ThreadCondition.PERFORMED) {
                 try {
                     Thread.sleep(defaultFirstTSpeed)
+                    println("CURRENT THREAD NAME IS " + Thread.currentThread().id)
                 } catch (e: InterruptedException) {
-                    println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
+                    //println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
                     break;
                 }
                 if (controlThreads.get() && FirstThreadCondition == ThreadCondition.PERFORMED) {
@@ -212,8 +213,9 @@ class SecondTaskFragment : Fragment() {
             if (controlThreads.get() && SecondThreadCondition == ThreadCondition.PERFORMED) {
                 try {
                     Thread.sleep(defaultSecondTSpeed)
+                    println("CURRENT THREAD NAME IS " + Thread.currentThread().id)
                 } catch (e: InterruptedException) {
-                    println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
+                    //println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
                     break;
                 }
                 if (controlThreads.get() && SecondThreadCondition == ThreadCondition.PERFORMED) {
@@ -222,10 +224,6 @@ class SecondTaskFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun threadIncrementation(){
-        
     }
 
     override fun onResume() {
@@ -245,7 +243,7 @@ class SecondTaskFragment : Fragment() {
         suspendThreads()
     }
 
-    private fun suspendThreads(){
+    private fun suspendThreads() {
         controlThreads.set(false)
         FirstThreadCondition = ThreadCondition.SUSPENDED
         SecondThreadCondition = ThreadCondition.SUSPENDED
