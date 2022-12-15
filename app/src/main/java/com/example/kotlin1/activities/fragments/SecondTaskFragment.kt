@@ -24,8 +24,10 @@ enum class ThreadCondition {
 
 class SecondTaskFragment : Fragment() {
 
-    private var FirstThreadCondition: ThreadCondition = ThreadCondition.CREATED
-    private var SecondThreadCondition: ThreadCondition = ThreadCondition.CREATED
+    @Volatile
+    private var firstThreadCondition: ThreadCondition = ThreadCondition.CREATED
+    @Volatile
+    private var secondThreadCondition: ThreadCondition = ThreadCondition.CREATED
     private lateinit var firstThreadTextOutput: TextView
     private lateinit var secondThreadTextOutput: TextView
     private lateinit var runButton: Button
@@ -52,6 +54,10 @@ class SecondTaskFragment : Fragment() {
 
     @Volatile
     private var defaultSecondTSpeed: Long = 5000
+
+    companion object {
+        private const val INCREMENT_STEP = 1000
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -105,10 +111,10 @@ class SecondTaskFragment : Fragment() {
         }
 
         runButton.setOnClickListener {
-            if (FirstThreadCondition == ThreadCondition.CREATED || FirstThreadCondition == ThreadCondition.SUSPENDED) {
+            if (firstThreadCondition == ThreadCondition.CREATED || firstThreadCondition == ThreadCondition.SUSPENDED) {
                 controlThreads.set(true)
-                FirstThreadCondition = ThreadCondition.STARTED
-                SecondThreadCondition = ThreadCondition.STARTED
+                firstThreadCondition = ThreadCondition.STARTED
+                secondThreadCondition = ThreadCondition.STARTED
 
                 if (!threadsLaunched) {
                     launchThreads()
@@ -128,8 +134,8 @@ class SecondTaskFragment : Fragment() {
             if (threadsLaunched) {
                 controlThreads.set(false)
 
-                FirstThreadCondition = ThreadCondition.SUSPENDED
-                SecondThreadCondition = ThreadCondition.SUSPENDED
+                firstThreadCondition = ThreadCondition.SUSPENDED
+                secondThreadCondition = ThreadCondition.SUSPENDED
                 firstNumber = 0
                 secondNumber = 0
                 firstThreadTextOutput.text = firstNumber.toString()
@@ -139,28 +145,28 @@ class SecondTaskFragment : Fragment() {
 
         increaseFirstThreadSpeed.setOnClickListener {
             var temp = defaultFirstTSpeed
-            temp += 1000
+            temp += INCREMENT_STEP
             defaultFirstTSpeed = temp
         }
 
         decreaseFirstThreadSpeed.setOnClickListener {
             var temp = defaultFirstTSpeed
-            if ((temp - 1000) > 0) {
-                temp -= 1000
+            if ((temp - INCREMENT_STEP) > 0) {
+                temp -= INCREMENT_STEP
             }
             defaultFirstTSpeed = temp
         }
 
         increaseSecondThreadSpeed.setOnClickListener {
             var temp = defaultSecondTSpeed
-            temp += 1000
+            temp += INCREMENT_STEP
             defaultSecondTSpeed = temp
         }
 
         decreaseSecondThreadSpeed.setOnClickListener {
             var temp = defaultSecondTSpeed
-            if ((temp - 1000) > 0) {
-                temp -= 1000
+            if ((temp - INCREMENT_STEP) > 0) {
+                temp -= INCREMENT_STEP
             }
             defaultSecondTSpeed = temp
         }
@@ -188,9 +194,9 @@ class SecondTaskFragment : Fragment() {
 
     private fun firstThreadIncrementation() {
         while (true) {
-            if (FirstThreadCondition == ThreadCondition.STARTED || FirstThreadCondition == ThreadCondition.CREATED)
-                FirstThreadCondition = ThreadCondition.PERFORMED
-            if (controlThreads.get() && FirstThreadCondition == ThreadCondition.PERFORMED) {
+            if (firstThreadCondition == ThreadCondition.STARTED || firstThreadCondition == ThreadCondition.CREATED)
+                firstThreadCondition = ThreadCondition.PERFORMED
+            if (controlThreads.get() && firstThreadCondition == ThreadCondition.PERFORMED) {
                 try {
                     Thread.sleep(defaultFirstTSpeed)
                     println("CURRENT THREAD NAME IS " + Thread.currentThread().id)
@@ -198,7 +204,7 @@ class SecondTaskFragment : Fragment() {
                     //println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
                     break;
                 }
-                if (controlThreads.get() && FirstThreadCondition == ThreadCondition.PERFORMED) {
+                if (controlThreads.get() && firstThreadCondition == ThreadCondition.PERFORMED) {
                     handlerFirstThread.sendEmptyMessage(1)
                     firstNumber++
                 }
@@ -208,9 +214,9 @@ class SecondTaskFragment : Fragment() {
 
     private fun secondThreadIncrementation() {
         while (true) {
-            if (SecondThreadCondition == ThreadCondition.STARTED || SecondThreadCondition == ThreadCondition.CREATED)
-                SecondThreadCondition = ThreadCondition.PERFORMED
-            if (controlThreads.get() && SecondThreadCondition == ThreadCondition.PERFORMED) {
+            if (secondThreadCondition == ThreadCondition.STARTED || secondThreadCondition == ThreadCondition.CREATED)
+                secondThreadCondition = ThreadCondition.PERFORMED
+            if (controlThreads.get() && secondThreadCondition == ThreadCondition.PERFORMED) {
                 try {
                     Thread.sleep(defaultSecondTSpeed)
                     println("CURRENT THREAD NAME IS " + Thread.currentThread().id)
@@ -218,7 +224,7 @@ class SecondTaskFragment : Fragment() {
                     //println("CURRENT THREAD NAME IS " + Thread.currentThread().name)
                     break;
                 }
-                if (controlThreads.get() && SecondThreadCondition == ThreadCondition.PERFORMED) {
+                if (controlThreads.get() && secondThreadCondition == ThreadCondition.PERFORMED) {
                     handlerSecondThread.sendEmptyMessage(1)
                     secondNumber++
                 }
@@ -245,8 +251,8 @@ class SecondTaskFragment : Fragment() {
 
     private fun suspendThreads() {
         controlThreads.set(false)
-        FirstThreadCondition = ThreadCondition.SUSPENDED
-        SecondThreadCondition = ThreadCondition.SUSPENDED
+        firstThreadCondition = ThreadCondition.SUSPENDED
+        secondThreadCondition = ThreadCondition.SUSPENDED
     }
 
     override fun onDestroyView() {
