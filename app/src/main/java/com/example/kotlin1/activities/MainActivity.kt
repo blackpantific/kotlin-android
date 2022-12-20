@@ -10,8 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.kotlin1.R
 import com.example.kotlin1.activities.fragments.*
 import com.example.kotlin1.models.Auto
+import com.example.kotlin1.models.Task
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
+import java.util.*
 
 enum class ColorOfToolBar {
     DEFAULT,
@@ -19,7 +21,7 @@ enum class ColorOfToolBar {
 }
 
 class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
-    FirstTaskFragment.Callbacks {
+    FirstTaskFragment.Callbacks, ThirdTaskFragment.Callbacks {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout: DrawerLayout
@@ -114,6 +116,15 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
 
     override fun replaceFragment(selectedCar: Auto) {
         val fragment = FirstTaskDetailsFragment.newInstance(selectedCar)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onTaskSelected(task: Task) {
+        val fragment = TaskDetailsFragment.newInstance(task)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)

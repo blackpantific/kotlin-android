@@ -26,4 +26,8 @@
     <string name="run">Run</string>
     <string name="stop">Stop</string>
     <string name="reset">reset</string>
+    <string name="new_task">Add task</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_task">Save task</string>
 </resources>
