@@ -3,10 +3,12 @@ package com.example.kotlin1.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentManager
 import com.example.kotlin1.R
 import com.example.kotlin1.activities.fragments.*
 import com.example.kotlin1.models.Auto
@@ -42,6 +44,22 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        supportFragmentManager.addOnBackStackChangedListener() {
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true) // show back button
+                toolbar.setNavigationOnClickListener() {
+                    onBackPressed();
+                }
+            } else {
+                //show hamburger
+                supportActionBar!!.setDisplayHomeAsUpEnabled(false);
+                toggle.syncState();
+                toolbar.setNavigationOnClickListener() {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+            }
+        }
 
         navigationView.setNavigationItemSelectedListener(this)
 

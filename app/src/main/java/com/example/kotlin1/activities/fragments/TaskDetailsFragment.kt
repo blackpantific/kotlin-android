@@ -28,25 +28,7 @@ class TaskDetailsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_task_details, container, false)
 
-        thisFragmentActivity = activity as AppCompatActivity
-        thisFragmentActivity.supportActionBar!!.hide()
-
-        val toolbar = view.findViewById<Toolbar>(R.id.my_toolbar)
-        thisFragmentActivity.setSupportActionBar(toolbar)
-
-        thisFragmentActivity.supportActionBar!!.setDisplayHomeAsUpEnabled(true);
-        thisFragmentActivity.supportActionBar!!.setDisplayShowHomeEnabled(true);
-
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
