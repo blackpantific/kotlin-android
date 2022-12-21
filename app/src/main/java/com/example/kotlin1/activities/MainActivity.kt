@@ -3,20 +3,16 @@ package com.example.kotlin1.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModelProviders
 import com.example.kotlin1.R
 import com.example.kotlin1.activities.fragments.*
 import com.example.kotlin1.models.Auto
 import com.example.kotlin1.models.Task
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener
-import java.util.*
 
 enum class ColorOfToolBar {
     DEFAULT,
@@ -142,7 +138,7 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
             .commit()
     }
 
-    override fun onTaskSelected(task: Task) {
+    override fun onTaskSelected(task: Task?) {
         val fragment = TaskDetailsFragment.newInstance(task)
         supportFragmentManager
             .beginTransaction()

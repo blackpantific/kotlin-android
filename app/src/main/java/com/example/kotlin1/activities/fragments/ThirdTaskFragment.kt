@@ -6,20 +6,18 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin1.R
 import com.example.kotlin1.TaskAdapter
 import com.example.kotlin1.activities.TaskListViewModel
 import com.example.kotlin1.models.Task
-import java.util.*
 
 class ThirdTaskFragment : Fragment() {
 
     //WHAT HAVE I HAVE TO DO WITH THIS?
     interface Callbacks {
-        fun onTaskSelected(task: Task)
+        fun onTaskSelected(task: Task?)
     }
 
     private var callbacks: Callbacks? = null
@@ -66,9 +64,9 @@ class ThirdTaskFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.new_task -> {
-                val task = Task("Default name", "Default time")
+                //val task = Task("Default name", "Default time")
 
-                callbacks?.onTaskSelected(task)
+                callbacks?.onTaskSelected(null)
                 true
             }
             else -> return super.onOptionsItemSelected(item)

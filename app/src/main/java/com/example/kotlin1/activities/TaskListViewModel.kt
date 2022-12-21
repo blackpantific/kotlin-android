@@ -5,11 +5,16 @@ import com.example.kotlin1.models.Task
 
 class TaskListViewModel : ViewModel() {
 
+    var isInitialized = false
     var list = mutableListOf<Task>()
 
-    fun init(){
-        for (i in 1..10) {
-            list.add(Task("Some name$i", "Some date$i"))
+    fun init() {
+        if (!isInitialized) {
+            for (i in 1..10) {
+                Task.idToIncrement++
+                list.add(Task(Task.idToIncrement, "Some name$i", "Some date$i"))
+            }
+            isInitialized = true
         }
     }
 }

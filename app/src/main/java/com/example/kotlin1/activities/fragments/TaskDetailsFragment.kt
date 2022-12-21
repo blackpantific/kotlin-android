@@ -56,9 +56,9 @@ class TaskDetailsFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        this.view?.let { hideKeyboardFrom(this.requireContext(), it) }
         taskListViewModel.list.add(
             Task(
+                Task.idToIncrement,
                 title.text.toString(),
                 taskDescription.text.toString()
             )
@@ -67,8 +67,13 @@ class TaskDetailsFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onStop() {
+        this.view?.let { hideKeyboardFrom(this.requireContext(), it) }
+        super.onStop()
+    }
+
     companion object {
-        fun newInstance(selectedTask: Task): TaskDetailsFragment {
+        fun newInstance(selectedTask: Task?): TaskDetailsFragment {
             val args = Bundle().apply {
                 putSerializable(ARG_TASK, selectedTask)
             }
