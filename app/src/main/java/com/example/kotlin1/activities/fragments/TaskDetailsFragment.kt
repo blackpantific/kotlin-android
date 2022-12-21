@@ -16,12 +16,14 @@ private const val ARG_TASK = "task_key"
 
 class TaskDetailsFragment : Fragment() {
 
+    private lateinit var selectedTask: Task
     private val taskListViewModel: TaskListViewModel by lazy {
         ViewModelProvider(requireActivity()).get(TaskListViewModel::class.java)
     }
 
     private lateinit var title: EditText
     private lateinit var taskDescription: EditText
+    var needToCreateItem: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,14 @@ class TaskDetailsFragment : Fragment() {
         title = view.findViewById(R.id.title)
         taskDescription = view.findViewById(R.id.task_description)
 
+        if (arguments?.getSerializable(ARG_TASK) == null) {
+            needToCreateItem = true
+        } else {
+            selectedTask = arguments?.getSerializable(ARG_TASK) as Task
+            title.setText(selectedTask.name)
+            taskDescription.setText(selectedTask.date)
+        }
+
         return view
     }
 
@@ -53,13 +63,13 @@ class TaskDetailsFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        taskListViewModel.list.add(
-            Task(
-                Task.idToIncrement,
-                title.text.toString(),
-                taskDescription.text.toString()
-            )
-        )
+        if(needToCreateItem){
+            selectedTask = Task(Task.idToIncrement, title.text.toString(),taskDescription.text.toString())
+            taskListViewModel.list.add(selectedTask)
+        }else{
+            selectedTask.name = title.text.toString()
+            selectedTask.date = taskDescription.text.toString()
+        }
         fragmentManager?.popBackStack()
         return super.onOptionsItemSelected(item)
     }
