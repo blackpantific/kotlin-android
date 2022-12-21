@@ -1,19 +1,16 @@
 package com.example.kotlin1.activities.fragments
 
 import android.app.Activity
-import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin1.R
 import com.example.kotlin1.activities.TaskListViewModel
 import com.example.kotlin1.models.Task
-
 
 private const val ARG_TASK = "task_key"
 
