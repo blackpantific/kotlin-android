@@ -43,8 +43,8 @@ class TaskHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListen
     }
 
     override fun onClick(v: View?) {
-        val callbacks = v?.context as ThirdTaskFragment.Callbacks
-        callbacks.onTaskSelected(task)
+        val fragmentNavigator = v?.context as ThirdTaskFragment.FragmentNavigator
+        fragmentNavigator.onTaskSelected(task)
     }
 
     init {

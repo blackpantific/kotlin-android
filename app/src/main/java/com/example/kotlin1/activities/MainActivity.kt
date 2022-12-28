@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.kotlin1.R
@@ -20,8 +21,9 @@ enum class ColorOfToolBar {
 }
 
 class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
-    FirstTaskFragment.Callbacks, ThirdTaskFragment.Callbacks {
+    FirstTaskFragment.FragmentNavigator, ThirdTaskFragment.FragmentNavigator {
 
+    private lateinit var toolbar: Toolbar
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.nav_view)
 
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         toggle =
@@ -68,6 +70,13 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener,
                 .beginTransaction()
                 .add(R.id.fragment_container, SaveNumberFragment())
                 .commit()
+        }
+    }
+
+    fun showBackButton(){
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true) // show back button
+        toolbar.setNavigationOnClickListener() {
+            onBackPressed();
         }
     }
 

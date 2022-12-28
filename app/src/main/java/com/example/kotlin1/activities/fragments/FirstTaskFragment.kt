@@ -26,11 +26,12 @@ private const val ARG_IN_TXT = "IN_TXT"
 
 class FirstTaskFragment : Fragment() {
 
-    interface Callbacks {
+    //rename router or navigator
+    interface FragmentNavigator {
         fun replaceFragment(selectedCar: Auto)
     }
 
-    private var callbacks: Callbacks? = null
+    private var fragmentNavigator: FragmentNavigator? = null
     private lateinit var fabButton: FloatingActionButton
     private lateinit var textOutput: TextView
     private lateinit var textInput: EditText
@@ -43,7 +44,7 @@ class FirstTaskFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as Callbacks?
+        fragmentNavigator = context as FragmentNavigator?
     }
 
     override fun onCreateView(
@@ -107,7 +108,7 @@ class FirstTaskFragment : Fragment() {
         listView.onItemClickListener =
             AdapterView.OnItemClickListener { parent, v, position, id -> // получаем выбранный пункт
                 val selectedAuto = parent.getItemAtPosition(position) as Auto
-                callbacks?.replaceFragment(selectedAuto)
+                fragmentNavigator?.replaceFragment(selectedAuto)
             }
 
         return view
@@ -115,7 +116,7 @@ class FirstTaskFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        callbacks = null
+        fragmentNavigator = null
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

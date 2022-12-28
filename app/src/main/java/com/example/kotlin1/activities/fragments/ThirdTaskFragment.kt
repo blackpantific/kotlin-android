@@ -15,12 +15,11 @@ import com.example.kotlin1.models.Task
 
 class ThirdTaskFragment : Fragment() {
 
-    //WHAT HAVE I HAVE TO DO WITH THIS?
-    interface Callbacks {
+    interface FragmentNavigator {
         fun onTaskSelected(task: Task?)
     }
 
-    private var callbacks: Callbacks? = null
+    private var fragmentNavigator: FragmentNavigator? = null
     private lateinit var taskRecyclerView: RecyclerView
     private lateinit var thisFragmentActivity: AppCompatActivity
 
@@ -30,7 +29,7 @@ class ThirdTaskFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as Callbacks?
+        fragmentNavigator = context as FragmentNavigator?
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +63,7 @@ class ThirdTaskFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.new_task -> {
-                callbacks?.onTaskSelected(null)
+                fragmentNavigator?.onTaskSelected(null)
                 true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -73,6 +72,6 @@ class ThirdTaskFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        callbacks = null
+        fragmentNavigator = null
     }
 }
