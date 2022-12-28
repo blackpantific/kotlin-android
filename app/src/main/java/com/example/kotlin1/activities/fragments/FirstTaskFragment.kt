@@ -74,7 +74,6 @@ class FirstTaskFragment : Fragment() {
         listView.visibility = savedInstanceState?.getInt(ARG_EXP_LT) ?: View.VISIBLE
         textOutput.text = savedInstanceState?.getString(ARG_OUT_TXT)
 
-
         fabButton.setOnClickListener {
             textOutput.text = textInput.text
         }

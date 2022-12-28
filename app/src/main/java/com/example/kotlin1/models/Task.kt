@@ -1,12 +1,16 @@
 package com.example.kotlin1.models
 
-class Task(val id: Int, var name: String, var date: String) : java.io.Serializable{
+class Task(var id: Int, var title: String, var description: String) : java.io.Serializable {
 
     constructor(id: Int) : this(id, "", "") {
 
     }
 
-    companion object{
+    constructor() : this(0) {
+
+    }
+
+    companion object {
         var idToIncrement = 0
     }
 }

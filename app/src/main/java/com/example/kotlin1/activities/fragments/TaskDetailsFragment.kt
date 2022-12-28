@@ -9,7 +9,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin1.R
-import com.example.kotlin1.activities.TaskListViewModel
+import com.example.kotlin1.activities.viewModels.TaskListViewModel
 import com.example.kotlin1.models.Task
 
 private const val ARG_TASK = "task_key"
@@ -44,8 +44,8 @@ class TaskDetailsFragment : Fragment() {
             needToCreateItem = true
         } else {
             selectedTask = arguments?.getSerializable(ARG_TASK) as Task
-            title.setText(selectedTask.name)
-            taskDescription.setText(selectedTask.date)
+            title.setText(selectedTask.title)
+            taskDescription.setText(selectedTask.description)
         }
 
         return view
@@ -67,8 +67,8 @@ class TaskDetailsFragment : Fragment() {
             selectedTask = Task(Task.idToIncrement, title.text.toString(),taskDescription.text.toString())
             taskListViewModel.list.add(selectedTask)
         }else{
-            selectedTask.name = title.text.toString()
-            selectedTask.date = taskDescription.text.toString()
+            selectedTask.title = title.text.toString()
+            selectedTask.description = taskDescription.text.toString()
         }
         fragmentManager?.popBackStack()
         return super.onOptionsItemSelected(item)

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin1.R
 import com.example.kotlin1.TaskAdapter
-import com.example.kotlin1.activities.TaskListViewModel
+import com.example.kotlin1.activities.viewModels.TaskListViewModel
 import com.example.kotlin1.models.Task
 
 class ThirdTaskFragment : Fragment() {

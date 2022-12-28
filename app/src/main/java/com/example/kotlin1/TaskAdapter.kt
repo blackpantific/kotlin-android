@@ -38,8 +38,8 @@ class TaskHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListen
 
     fun bind(task: Task) {
         this.task = task
-        taskTitleView.text = this.task.name
-        taskCreationDateView.text = this.task.date
+        taskTitleView.text = this.task.title
+        taskCreationDateView.text = this.task.description
     }
 
     override fun onClick(v: View?) {
